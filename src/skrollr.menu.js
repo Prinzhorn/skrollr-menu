@@ -48,11 +48,11 @@
 			return;
 		}
 
-		//Don't use the href property because it contains the absolute url.
+		//Don't use the href property (link.href) because it contains the absolute url.
 		var href = link.getAttribute('href');
 
 		//Check if it's a hashlink.
-		if(href.indexOf('#') !== 0) {
+		if(/^#/.test(href)) {
 			return;
 		}
 
