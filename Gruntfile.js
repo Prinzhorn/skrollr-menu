@@ -22,9 +22,6 @@ module.exports = function(grunt) {
 			},
 			all: ['src/**/*.js']
 		},
-		qunit: {
-			all: ['test/index.html']
-		},
 		uglify: {
 			options: {
 				banner: '/*! skrollr-menu <%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>) | Alexander Prinzhorn - https://github.com/Prinzhorn/skrollr-menu | Free to use under terms of MIT license */\n'
