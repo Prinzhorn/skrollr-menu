@@ -1,0 +1,36 @@
+{
+  "name": "skrollr-menu",
+  "title": "skrollr menu plugin",
+  "description": "skrollr plugin for hash navigation.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Prinzhorn/skrollr-menu",
+  "author": {
+    "name": "Alexander Prinzhorn",
+    "email": "alexander@prinzhorn.it",
+    "url": "http://www.prinzhorn.it/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Prinzhorn/skrollr-menu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Prinzhorn/skrollr-menu/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/Prinzhorn/skrollr-menu/blob/master/LICENSE.txt"
+    }
+  ],
+  "main": "dist/skrollr.menu.min.js",
+  "engines": {
+    "node": ">=0.8"
+  },
+  "devDependencies": {
+    "grunt-cli": "~0.1.7",
+    "grunt": "~0.4.1",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-jshint": "~0.3.0"
+  },
+  "keywords": []
+}
