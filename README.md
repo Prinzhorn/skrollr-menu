@@ -37,6 +37,11 @@ This link will cause the page to scroll to `500`. But you should let the the hre
 Changelog
 ====
 
+0.1.1 (2013-05-18)
+-----
+
+* Handle the case when the clicked link doesn't have a `href` attribute at all.
+
 0.1.0 (2013-05-18)
 -----
 
