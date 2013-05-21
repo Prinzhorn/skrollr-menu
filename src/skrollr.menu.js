@@ -52,7 +52,7 @@
 		var href = link.getAttribute('href');
 
 		//Check if it's a hashlink.
-		if(/^#/.test(href)) {
+		if(!/^#/.test(href)) {
 			return;
 		}
 
