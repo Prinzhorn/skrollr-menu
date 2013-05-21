@@ -1,4 +1,4 @@
-skrollr-menu 0.1.0
+skrollr-menu 0.1.2
 ============
 
 skrollr plugin for hash navigation.
@@ -36,6 +36,11 @@ This link will cause the page to scroll to `500`. But you should let the the hre
 
 Changelog
 ====
+
+0.1.2 (2013-05-21)
+-----
+
+* Made the plugin work again (stupid regression from 0.1.1).
 
 0.1.1 (2013-05-18)
 -----
