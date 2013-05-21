@@ -33,9 +33,31 @@ And in order to fix the problem with the wrong offset, you are able to specify t
 
 This link will cause the page to scroll to `500`. But you should let the the href point to the actual target because if skrollr or js are disabled, the links will still work.
 
+Offsets
+-----
+
+When you don't want the target element to be perfectly aligned with the top of the viewport (that's what the browser does), then you can use `data-menu-offset` on the target element to specify an offset from the top.
+
+For example when you have a fixed navigation with a height of `100px`, then you probably want skrollr-menu to put the element at least 100px from the top in order to not disappear behind the nav.
+
+```html
+<section id="kittens" data-menu-offset="-100">
+    <h1>If it fits, I sits</h1>
+    <p>Some text about felines (the internet loves felines).</p>
+</section>
+```
+
+Note how the offset is negative, because we want to scroll down `100px` **less** than normal. Or in other words, we want to stop `100px` **before** the element. Positive values work the opposite way (scroll farther than usual).
+
 
 Changelog
 ====
+
+0.1.3 (2013-05-21)
+-----
+
+* Only listen to left click (#2).
+* Added `data-menu-offset` (see documentation).
 
 0.1.2 (2013-05-21)
 -----

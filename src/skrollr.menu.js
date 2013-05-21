@@ -12,7 +12,8 @@
 	var DEFAULT_DURATION = 500;
 	var DEFAULT_EASING = 'sqrt';
 
-	var TOP_OFFSET_ATTRIBUTE = 'data-menu-top';
+	var MENU_TOP_ATTR = 'data-menu-top';
+	var MENU_OFFSET_ATTR = 'data-menu-offset';
 
 	var skrollr = window.skrollr;
 
@@ -39,7 +40,10 @@
 		Handle the click event on the document.
 	*/
 	var handleClick = function(e) {
-
+		//Only handle left click.
+		if((e.which || e.button) !== 1) {
+			return;
+		}
 
 		var link = findParentLink(e.target);
 
@@ -56,12 +60,14 @@
 			return;
 		}
 
-		//Now get the offset to scroll to.
-		var offset;
+		//Now get the targetTop to scroll to.
+		var targetTop;
 
 		//If there's a data-menu-top attribute, it overrides the actuall anchor offset.
-		if(link.hasAttribute(TOP_OFFSET_ATTRIBUTE)) {
-			offset = +link.getAttribute(TOP_OFFSET_ATTRIBUTE);
+		var menuTop = link.getAttribute(MENU_TOP_ATTR);
+
+		if(menuTop !== null) {
+			targetTop = +menuTop;
 		} else {
 			var scrollTarget = document.getElementById(href.substr(1));
 
@@ -70,17 +76,23 @@
 				return;
 			}
 
-			offset = _skrollrInstance.relativeToAbsolute(scrollTarget, 'top', 'top');
+			targetTop = _skrollrInstance.relativeToAbsolute(scrollTarget, 'top', 'top');
+
+			var menuOffset = scrollTarget.getAttribute(MENU_OFFSET_ATTR);
+
+			if(menuOffset !== null) {
+				targetTop += +menuOffset;
+			}
 		}
 
 		//Now finally scroll there.
 		if(_animate) {
-			_skrollrInstance.animateTo(offset, {
+			_skrollrInstance.animateTo(targetTop, {
 				duration: _duration,
 				easing: _easing
 			});
 		} else {
-			_skrollrInstance.setScrollTop(offset);
+			_skrollrInstance.setScrollTop(targetTop);
 		}
 
 		e.preventDefault();
