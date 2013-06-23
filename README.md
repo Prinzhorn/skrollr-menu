@@ -1,4 +1,4 @@
-skrollr-menu 0.1.2
+skrollr-menu 0.1.4
 ============
 
 skrollr plugin for hash navigation.
@@ -52,6 +52,12 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.4 (2013-06-23)
+-----
+
+* When clicking on a link, change the hash in the url (#3). With back-button functionality.
+* Also, when entering the website with a hash inside the url, jump to it.
 
 0.1.3 (2013-05-21)
 -----
