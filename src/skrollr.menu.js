@@ -16,6 +16,8 @@
 	var MENU_OFFSET_ATTR = 'data-menu-offset';
 
 	var skrollr = window.skrollr;
+	var history = window.history;
+	var supportsHistory = !!history.pushState;
 
 	/*
 		Since we are using event bubbling, the element that has been clicked
@@ -52,12 +54,22 @@
 			return;
 		}
 
+		if(handleLink(link)) {
+			e.preventDefault();
+		}
+	};
+
+	/*
+		Handles the click on a link. May be called without an actual click event.
+		When the fake flag is set, the link won't change the url and the position won't be animated.
+	*/
+	var handleLink = function(link, fake) {
 		//Don't use the href property (link.href) because it contains the absolute url.
 		var href = link.getAttribute('href');
 
 		//Check if it's a hashlink.
 		if(!/^#/.test(href)) {
-			return;
+			return false;
 		}
 
 		//Now get the targetTop to scroll to.
@@ -73,7 +85,7 @@
 
 			//Ignore the click if no target is found.
 			if(!scrollTarget) {
-				return;
+				return false;
 			}
 
 			targetTop = _skrollrInstance.relativeToAbsolute(scrollTarget, 'top', 'top');
@@ -85,17 +97,27 @@
 			}
 		}
 
+		if(supportsHistory && !fake) {
+			history.pushState({top: targetTop}, '', href);
+		}
+
 		//Now finally scroll there.
-		if(_animate) {
+		if(_animate && !fake) {
 			_skrollrInstance.animateTo(targetTop, {
 				duration: _duration,
 				easing: _easing
 			});
 		} else {
-			_skrollrInstance.setScrollTop(targetTop);
+			defer(function() {
+				_skrollrInstance.setScrollTop(targetTop);
+			});
 		}
 
-		e.preventDefault();
+		return true;
+	};
+
+	var defer = function(fn) {
+		window.setTimeout(fn, 1);
 	};
 
 	/*
@@ -113,6 +135,17 @@
 
 		//Use event bubbling and attach a single listener to the document.
 		skrollr.addEvent(document, 'click', handleClick);
+
+		if(supportsHistory) {
+			window.addEventListener('popstate', function(e) {
+				var state = e.state || {};
+				var top = state.top || 0;
+
+				defer(function() {
+					_skrollrInstance.setScrollTop(top);
+				});
+			}, false);
+		}
 	};
 
 	//Private reference to the initialized skrollr.
@@ -124,9 +157,17 @@
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
-	window.setTimeout(function() {
+	defer(function() {
 		if(window.location.hash) {
 			window.scrollTo(0, 0);
+
+			if(document.querySelector) {
+				var link = document.querySelector('a[href="' + window.location.hash + '"]');
+
+				if(link) {
+					handleLink(link, true);
+				}
+			}
 		}
-	}, 1);
+	});
 }(document, window));
