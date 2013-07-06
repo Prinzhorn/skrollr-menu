@@ -145,6 +145,22 @@
 					_skrollrInstance.setScrollTop(top);
 				});
 			}, false);
+            
+            //In case the page was opened with a hash, prevent jumping to it.
+            //http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
+            defer(function() {
+                if(window.location.hash) {
+                    window.scrollTo(0, 0);
+
+                    if(document.querySelector) {
+                        var link = document.querySelector('a[href="' + window.location.hash + '"]');
+
+                        if(link) {
+                            handleLink(link);
+                        }
+                    }
+                }
+            });            
 		}
 	};
 
@@ -155,19 +171,4 @@
 	var _duration;
 	var _animate;
 
-	//In case the page was opened with a hash, prevent jumping to it.
-	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
-	defer(function() {
-		if(window.location.hash) {
-			window.scrollTo(0, 0);
-
-			if(document.querySelector) {
-				var link = document.querySelector('a[href="' + window.location.hash + '"]');
-
-				if(link) {
-					handleLink(link, true);
-				}
-			}
-		}
-	});
 }(document, window));
