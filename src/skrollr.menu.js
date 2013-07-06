@@ -156,7 +156,7 @@
                         var link = document.querySelector('a[href="' + window.location.hash + '"]');
 
                         if(link) {
-                            handleLink(link);
+                            handleLink(link, true);
                         }
                     }
                 }
