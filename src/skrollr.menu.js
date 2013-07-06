@@ -138,20 +138,23 @@
 
 		if(supportsHistory) {
 			window.addEventListener('popstate', function(e) {
-				var state = e.state || {};
-				var top = state.top || 0;
+              if (e.state) {
+                var state = e.state || {};
+                var top = state.top || 0;
 
-				defer(function() {
-					_skrollrInstance.setScrollTop(top);
-				});
+                defer(function() {
+                    _skrollrInstance.setScrollTop(top);
+                });
+              }
 			}, false);
             
             //In case the page was opened with a hash, prevent jumping to it.
             //http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
             defer(function() {
                 if(window.location.hash) {
-                    window.scrollTo(0, 0);
 
+                    window.scrollTo(0, 0);
+                    
                     if(document.querySelector) {
                         var link = document.querySelector('a[href="' + window.location.hash + '"]');
 
@@ -160,7 +163,8 @@
                         }
                     }
                 }
-            });            
+            });
+            
 		}
 	};
 
