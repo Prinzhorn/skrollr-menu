@@ -39,8 +39,8 @@ Options
 For example if you want a constant scroll speed you can use this feature like this:
 ```js
 skrollr.menu.init(s, {
-	duration: function (currentTop, scrollTop) {
-		var scroll = Math.abs(currentTop - scrollTop);
+	duration: function (currentTop, targetTop) {
+		var scroll = Math.abs(currentTop - targetTop);
 		return scroll; // 1 px for 1 ms
 	}
 });
