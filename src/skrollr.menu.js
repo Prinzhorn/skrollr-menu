@@ -19,25 +19,25 @@
 	var history = window.history;
 	var supportsHistory = !!history.pushState;
 
-    /**
-     * durationFuncFactory simply checks if the user supplied duration option
-     * is an integer value or a function.  In the former case we return a
-     * function that always returns that constant integer value.  Otherwise, if
-     * options.duration is a function, it's called right before starting the
-     * animation.
-     */
+	/**
+	 * durationFuncFactory simply checks if the user supplied duration option
+	 * is an integer value or a function.  In the former case we return a
+	 * function that always returns that constant integer value.  Otherwise, if
+	 * options.duration is a function, it's called right before starting the
+	 * animation.
+	 */
 	var durationFuncFactory = function (options) {
-	    var dur = options.duration || DEFAULT_DURATION;
-	    if (typeof dur === 'number') {
-	        // The given duration option is an integer, thus we need to
-	        // return a function that always returns that exact value
-	        return function (currentTop, targetTop) {
-	            return dur;
-	        };
-	    } else {
-	        // A function is passed.  Return it as it is
-	        return dur;
-	    }
+		var dur = options.duration || DEFAULT_DURATION;
+		if (typeof dur === 'number') {
+			// The given duration option is an integer, thus we need to
+			// return a function that always returns that exact value
+			return function (/* currentTop, targetTop */) {
+				return dur;
+			};
+		} else {
+			// A function is passed.  Return it as it is
+			return dur;
+		}
 	};
 
 	/*
