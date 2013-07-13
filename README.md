@@ -1,4 +1,4 @@
-skrollr-menu 0.1.4
+skrollr-menu 0.1.5
 ============
 
 skrollr plugin for hash navigation.
@@ -19,9 +19,20 @@ var s = skrollr.init(/*other stuff*/);
 
 //The options (second parameter) are all optional. The values shown are the default values.
 skrollr.menu.init(s, {
-	animate: true, //skrollr will smoothly animate to the new position using `animateTo`.
-	duration: 500, //How long the animation should take in ms.
-	easing: 'sqrt' //The easing function to use.
+	//skrollr will smoothly animate to the new position using `animateTo`.
+	animate: true,
+
+	//The easing function to use.
+	easing: 'sqrt'
+
+	//How long the animation should take in ms.
+	duration: function(currentTop, targetTop) {
+		//By default, the duration is hardcoded at 500ms.
+		return 500;
+
+		//But you could calculate a value based on the current scroll position (`currentTop`) and the target scroll position (`targetTop`).
+		//return Math.abs(currentTop - targetTop) * 10;
+	},
 });
 ```
 
@@ -33,18 +44,6 @@ And in order to fix the problem with the wrong offset, you are able to specify t
 
 This link will cause the page to scroll to `500`. But you should let the the href point to the actual target because if skrollr or js are disabled, the links will still work.
 
-Options
------
-`options.duration` can optionally be a user function that computes duration time.
-For example if you want a constant scroll speed you can use this feature like this:
-```js
-skrollr.menu.init(s, {
-	duration: function (currentTop, targetTop) {
-		var scroll = Math.abs(currentTop - targetTop);
-		return scroll; // 1 px for 1 ms
-	}
-});
-```
 
 Offsets
 -----
@@ -65,6 +64,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.5 (2013-07-13)
+-----
+
+* The `duration` option now also accepts a function to dynamically calculate the duration based on how far the animation will scroll (#9).
 
 0.1.4 (2013-06-23)
 -----
