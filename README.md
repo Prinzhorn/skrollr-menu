@@ -33,6 +33,19 @@ And in order to fix the problem with the wrong offset, you are able to specify t
 
 This link will cause the page to scroll to `500`. But you should let the the href point to the actual target because if skrollr or js are disabled, the links will still work.
 
+Options
+-----
+`options.duration` can optionally be a user function that computes duration time.
+For example if you want a constant scroll speed you can use this feature like this:
+```js
+skrollr.menu.init(s, {
+	duration: function (currentTop, targetTop) {
+		var scroll = Math.abs(currentTop - targetTop);
+		return scroll; // 1 px for 1 ms
+	}
+});
+```
+
 Offsets
 -----
 
