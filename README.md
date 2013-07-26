@@ -23,7 +23,7 @@ skrollr.menu.init(s, {
 	animate: true,
 
 	//The easing function to use.
-	easing: 'sqrt'
+	easing: 'sqrt',
 
 	//How long the animation should take in ms.
 	duration: function(currentTop, targetTop) {
