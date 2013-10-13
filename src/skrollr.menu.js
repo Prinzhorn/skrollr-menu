@@ -43,7 +43,7 @@
 	*/
 	var handleClick = function(e) {
 		//Only handle left click.
-		if((e.which || e.button) !== 1) {
+		if(e.which !== 1 && e.button !== 0) {
 			return;
 		}
 
@@ -116,6 +116,16 @@
 		return true;
 	};
 
+	var jumpStraightToHash = function() {
+		if(window.location.hash && document.querySelector) {
+			var link = document.querySelector('a[href="' + window.location.hash + '"]');
+
+			if(link) {
+				handleLink(link, true);
+			}
+		}
+	};
+
 	var defer = function(fn) {
 		window.setTimeout(fn, 1);
 	};
@@ -154,6 +164,8 @@
 				});
 			}, false);
 		}
+
+		jumpStraightToHash();
 	};
 
 	//Private reference to the initialized skrollr.
@@ -168,14 +180,6 @@
 	defer(function() {
 		if(window.location.hash) {
 			window.scrollTo(0, 0);
-
-			if(document.querySelector) {
-				var link = document.querySelector('a[href="' + window.location.hash + '"]');
-
-				if(link) {
-					handleLink(link, true);
-				}
-			}
 		}
 	});
 }(document, window));

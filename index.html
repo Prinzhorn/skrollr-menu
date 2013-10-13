@@ -114,14 +114,16 @@
 
 	<script type="text/javascript" src="../skrollr/dist/skrollr.min.js"></script>
 
-	<script type="text/javascript" src="dist/skrollr.menu.min.js"></script>
+	<script type="text/javascript" src="src/skrollr.menu.js"></script>
 
 	<script type="text/javascript">
-	var s = skrollr.init({
-		forceHeight: false
-	});
+	setTimeout(function() {
+		var s = skrollr.init({
+			forceHeight: false
+		});
 
-	skrollr.menu.init(s);
+		skrollr.menu.init(s);
+	}, 500);
 	</script>
 </body>
 
