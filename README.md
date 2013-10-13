@@ -1,4 +1,4 @@
-skrollr-menu 0.1.5
+skrollr-menu 0.1.6
 ============
 
 skrollr plugin for hash navigation.
@@ -64,6 +64,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.6 (2013-10-13)
+-----
+
+* Don't jump to the hash on page load, only after init is called (#8, #12, #19)
 
 0.1.5 (2013-07-13)
 -----
