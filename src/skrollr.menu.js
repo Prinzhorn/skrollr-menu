@@ -155,7 +155,7 @@
 		skrollr.addEvent(document, 'click', handleClick);
 
 		if(supportsHistory) {
-			window.addEventListener('popstate', function(e) {
+			skrollr.addEvent(window, 'popstate', function(e) {
 				var state = e.state || {};
 				var top = state.top || 0;
 
