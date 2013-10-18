@@ -1,4 +1,4 @@
-skrollr-menu 0.1.6
+skrollr-menu 0.1.7
 ============
 
 skrollr plugin for hash navigation.
@@ -64,6 +64,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.7 (2013-10-18)
+-----
+
+* Use `skrollr.addEvent` instead of `addEventListener` in order to have the events removed when skrollr gets destroyed (#21)
 
 0.1.6 (2013-10-13)
 -----

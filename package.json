@@ -2,7 +2,7 @@
   "name": "skrollr-menu",
   "title": "skrollr menu plugin",
   "description": "skrollr plugin for hash navigation.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://github.com/Prinzhorn/skrollr-menu",
   "author": {
     "name": "Alexander Prinzhorn",
