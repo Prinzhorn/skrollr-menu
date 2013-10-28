@@ -61,6 +61,7 @@
 
 	var getLinkTargetTop = function(link)
 	{
+		var href = link.getAttribute('href');
 		var targetTop;
 
 		var menuTop = 0;
