@@ -77,11 +77,12 @@
 
 		var menuTop = null;
 
-        if(!_handleLink) //If there's a data-menu-top attribute and no handleLink function, it overrides the actuall anchor offset.
-            menuTop = link.getAttribute(MENU_TOP_ATTR);
-        else //If there's a handleLink function, it overrides the actuall anchor offset
-        	menuTop = _handleLink(link);
-        	
+		if(!_handleLink) { //If there's a data-menu-top attribute and no handleLink function, it overrides the actuall anchor offset.
+			menuTop = link.getAttribute(MENU_TOP_ATTR);
+		} else { //If there's a handleLink function, it overrides the actuall anchor offset
+			menuTop = _handleLink(link);
+		}
+
 		if(menuTop !== null) {
 			targetTop = +menuTop;
 		} else {
@@ -146,8 +147,8 @@
 		_easing = options.easing || DEFAULT_EASING;
 		_animate = options.animate !== false;
 		_duration = options.duration || DEFAULT_DURATION;
-        _handleLink = options.handleLink;
-                
+		_handleLink = options.handleLink;
+
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
 				return function() {
