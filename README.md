@@ -33,6 +33,12 @@ skrollr.menu.init(s, {
 		//But you could calculate a value based on the current scroll position (`currentTop`) and the target scroll position (`targetTop`).
 		//return Math.abs(currentTop - targetTop) * 10;
 	},
+
+	//If you pass a handleLink function you'll disable `data-menu-top` and `data-menu-offset`.
+	//You are in control where skrollr will scroll to. You get the clicked link as a parameter and are expected to return a number.
+	handleLink: function(link) {
+		return 400;//Hardcoding 400 doesn't make much sense.
+	}
 });
 ```
 

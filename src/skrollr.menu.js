@@ -75,12 +75,15 @@
 		//Now get the targetTop to scroll to.
 		var targetTop;
 
-		var menuTop = null;
+		var menuTop;
 
-		if(!_handleLink) { //If there's a data-menu-top attribute and no handleLink function, it overrides the actuall anchor offset.
-			menuTop = link.getAttribute(MENU_TOP_ATTR);
-		} else { //If there's a handleLink function, it overrides the actuall anchor offset
+		//If there's a handleLink function, it overrides the actual anchor offset.
+		if(_handleLink) {
 			menuTop = _handleLink(link);
+		}
+		//If there's a data-menu-top attribute and no handleLink function, it overrides the actual anchor offset.
+		else {
+			menuTop = link.getAttribute(MENU_TOP_ATTR);
 		}
 
 		if(menuTop !== null) {
