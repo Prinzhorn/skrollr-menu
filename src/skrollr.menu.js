@@ -76,8 +76,11 @@
 		var targetTop;
 
 		//If there's a data-menu-top attribute, it overrides the actuall anchor offset.
-		var menuTop = link.getAttribute(MENU_TOP_ATTR);
-
+		var menuTop = 0;
+        if(_itemPosFunction == null)
+             menuTop= link.getAttribute(MENU_TOP_ATTR);
+        else
+        	menuTop = _itemPosFunction.call(link);
 		if(menuTop !== null) {
 			targetTop = +menuTop;
 		} else {
@@ -142,7 +145,8 @@
 		_easing = options.easing || DEFAULT_EASING;
 		_animate = options.animate !== false;
 		_duration = options.duration || DEFAULT_DURATION;
-
+        _itemPosFunction = options.itemPosFunction || null;
+                
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
 				return function() {
@@ -174,6 +178,7 @@
 	var _easing;
 	var _duration;
 	var _animate;
+        var _itemPosFunction;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
