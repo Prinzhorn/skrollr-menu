@@ -1,4 +1,4 @@
-skrollr-menu 0.1.7
+skrollr-menu 0.1.8
 ============
 
 skrollr plugin for hash navigation.
@@ -70,6 +70,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.8 (2013-10-28)
+-----
+
+* Added `handleLink` function option (#24)
 
 0.1.7 (2013-10-18)
 -----
