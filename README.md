@@ -25,6 +25,9 @@ skrollr.menu.init(s, {
 	//The easing function to use.
 	easing: 'sqrt',
 
+	//Multiply your data-[offset] values so they match those set in skrollr.init
+	scale: 2,
+
 	//How long the animation should take in ms.
 	duration: function(currentTop, targetTop) {
 		//By default, the duration is hardcoded at 500ms.
