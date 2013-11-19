@@ -1,4 +1,4 @@
-skrollr-menu 0.1.8
+skrollr-menu 0.1.9
 ============
 
 skrollr plugin for hash navigation.
@@ -73,6 +73,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.9 (2013-11-19)
+-----
+
+* Added `scale` option (#23)
 
 0.1.8 (2013-10-28)
 -----
