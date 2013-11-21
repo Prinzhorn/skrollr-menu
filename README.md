@@ -53,6 +53,8 @@ And in order to fix the problem with the wrong offset, you are able to specify t
 
 This link will cause the page to scroll to `500`. But you should let the the href point to the actual target because if skrollr or js are disabled, the links will still work.
 
+As of skrollr-menu `0.1.10` you can also use percentage offsets by appending a `p` to the number. E.g. `data-menu-top="75p"` will scroll down 75% of the viewport height.
+
 
 Offsets
 -----

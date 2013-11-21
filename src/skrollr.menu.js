@@ -88,7 +88,12 @@
 		}
 
 		if(menuTop !== null) {
-			targetTop = +menuTop * _scale;
+			//Is it a percentage offset?
+			if(/p$/.test(menuTop)) {
+				targetTop = (menuTop.slice(0, -1) / 100) * document.documentElement.clientHeight;
+			} else {
+				targetTop = +menuTop * _scale;
+			}
 		} else {
 			var scrollTarget = document.getElementById(href.substr(1));
 
