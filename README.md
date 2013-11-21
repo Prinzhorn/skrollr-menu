@@ -1,4 +1,4 @@
-skrollr-menu 0.1.9
+skrollr-menu 0.1.10
 ============
 
 skrollr plugin for hash navigation.
@@ -75,6 +75,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.10 (2013-11-21)
+-----
+
+* Added support for percentage offsets in `data-menu-top` (#20)
 
 0.1.9 (2013-11-19)
 -----
