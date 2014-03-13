@@ -26,7 +26,7 @@
 	*/
 	var findParentLink = function(element) {
 		//Yay, it's a link!
-		if(element.tagName === 'A') {
+		if(element.tagName && element.tagName.toUpperCase() === 'A') {
 			return element;
 		}
 
