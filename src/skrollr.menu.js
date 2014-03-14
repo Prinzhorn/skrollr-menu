@@ -25,14 +25,14 @@
 		might not acutally be the link but a child.
 	*/
 	var findParentLink = function(element) {
-		//Yay, it's a link!
-		if(element.tagName && element.tagName.toUpperCase() === 'A') {
-			return element;
-		}
-
 		//We reached the top, no link found.
 		if(element === document) {
 			return false;
+		}
+
+		//Yay, it's a link!
+		if(element.tagName.toUpperCase() === 'A') {
+			return element;
 		}
 
 		//Maybe the parent is a link.
