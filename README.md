@@ -1,4 +1,4 @@
-skrollr-menu 0.1.10
+skrollr-menu 0.1.11
 ============
 
 skrollr plugin for hash navigation.
@@ -75,6 +75,11 @@ Note how the offset is negative, because we want to scroll down `100px` **less**
 
 Changelog
 ====
+
+0.1.11 (2014-03-14)
+-----
+
+* Fixed links not working inside SVG elements (#37)
 
 0.1.10 (2013-11-21)
 -----
