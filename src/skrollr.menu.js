@@ -43,6 +43,11 @@
 		Handle the click event on the document.
 	*/
 	var handleClick = function(e) {
+		//Ignore prevented events
+		if(e.defaultPrevented) {
+			return;
+		}
+
 		//Only handle left click.
 		if(e.which !== 1 && e.button !== 0) {
 			return;
