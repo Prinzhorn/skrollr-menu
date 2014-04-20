@@ -17,7 +17,8 @@ module.exports = function(grunt) {
 				globals: {
 					window: true,
 					document: true,
-					navigator: true
+					navigator: true,
+					define: true
 				}
 			},
 			all: ['src/**/*.js']
