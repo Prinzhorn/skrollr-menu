@@ -6,7 +6,25 @@
  *
  * Free to use under terms of MIT license
  */
-(function(document, window) {
+(function (window, document, skrollrMenuFactory) {
+	'use strict';
+
+	//In case the page was opened with a hash, prevent jumping to it.
+	//This code runs immediately, before skrollr may have loaded (if AMD's in use).
+	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
+	window.setTimeout(function() {
+		if(window.location.hash) {
+			window.scrollTo(0, 0);
+		}
+	}, 1);
+
+	if (typeof define === 'function' && define.amd) {
+		define(['skrollr'], skrollrMenuFactory);
+	}
+	else {
+		skrollrMenuFactory(window.skrollr);
+	}
+}(window, document, function (skrollr) {
 	'use strict';
 
 	var DEFAULT_DURATION = 500;
@@ -16,7 +34,6 @@
 	var MENU_TOP_ATTR = 'data-menu-top';
 	var MENU_OFFSET_ATTR = 'data-menu-offset';
 
-	var skrollr = window.skrollr;
 	var history = window.history;
 	var supportsHistory = !!history.pushState;
 
@@ -193,11 +210,5 @@
 	var _handleLink;
 	var _scale;
 
-	//In case the page was opened with a hash, prevent jumping to it.
-	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
-	defer(function() {
-		if(window.location.hash) {
-			window.scrollTo(0, 0);
-		}
-	});
-}(document, window));
+	return skrollr.menu;
+}));
