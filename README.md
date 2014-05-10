@@ -73,6 +73,17 @@ For example when you have a fixed navigation with a height of `100px`, then you 
 Note how the offset is negative, because we want to scroll down `100px` **less** than normal. Or in other words, we want to stop `100px` **before** the element. Positive values work the opposite way (scroll farther than usual).
 
 
+Programmatically triggering a click
+-----------------------------------
+
+If you want to click one of the menu links programmatically, simply pass the link DOM element to the `skrollr.menu.click` function. Skrollr menu has to be initialized first!
+
+```js
+var link = document.querySelector('a');
+skrollr.menu.click(link);
+```
+
+
 Changelog
 ====
 
