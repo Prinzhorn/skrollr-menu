@@ -1,4 +1,4 @@
-skrollr-menu 0.1.11
+skrollr-menu 0.1.12
 ============
 
 skrollr plugin for hash navigation.
