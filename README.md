@@ -87,6 +87,11 @@ skrollr.menu.click(link);
 Changelog
 ====
 
+0.1.12 (2014-05-10)
+-------------------
+
+* Added `skrollr.menu.click`
+
 0.1.11 (2014-03-14)
 -----
 
