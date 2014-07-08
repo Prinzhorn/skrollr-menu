@@ -133,7 +133,7 @@
 
 	var jumpStraightToHash = function() {
 		if(window.location.hash && document.querySelector) {
-			var searchFor = 'a' + (_menuLinkClass ? '.' + _menuLinkClass: '');
+			var searchFor = 'a' + (_menuLinkClass ? '.' + _menuLinkClass : '');
 			var link = document.querySelector(searchFor + '[href="' + window.location.hash + '"]');
 			if(link) {
 				handleLink(link, true);
