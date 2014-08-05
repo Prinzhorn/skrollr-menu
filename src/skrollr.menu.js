@@ -70,7 +70,7 @@
 		var clazz = link.getAttribute('class');
 
 		//Check if it's a hashlink.
-		if(!/^#/.test(href) || (clazz && clazz.indexOf(_menuLinkClass)==-1)) {
+		if(!/^#/.test(href) || (clazz===null) || (clazz && clazz.indexOf(_menuLinkClass)==-1)) {
 			return false;
 		}
 
@@ -133,7 +133,7 @@
 
 	var jumpStraightToHash = function() {
 		if(window.location.hash && document.querySelector) {
-			var searchFor = 'a' + (_menuLinkClass ? '.' + _menuLinkClass : '');
+			var searchFor = 'a' + (_menuLinkClass ? '.' + _menuLinkClass: '');
 			var link = document.querySelector(searchFor + '[href="' + window.location.hash + '"]');
 			if(link) {
 				handleLink(link, true);
