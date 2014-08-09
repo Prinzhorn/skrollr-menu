@@ -18,7 +18,7 @@ In case you want to use hash links, e.g. `<a href="#section-about">About</a>` yo
 var s = skrollr.init(/*other stuff*/);
 
 //The options (second parameter) are all optional. The values shown are the default values.
-skrollr.menu.init(s, {
+skrollr.menu.init(s), {
 	//skrollr will smoothly animate to the new position using `animateTo`.
 	animate: true,
 
