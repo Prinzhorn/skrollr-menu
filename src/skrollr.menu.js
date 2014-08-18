@@ -137,6 +137,11 @@
 			if(link) {
 				handleLink(link, true);
 			}
+            else { // No link found on page, so we create one and then activate it
+                var tmpLink = document.createElement('a');
+                tmpLink.href = window.location.hash;
+                handleLink(tmpLink, true);
+            }
 		}
 	};
 
