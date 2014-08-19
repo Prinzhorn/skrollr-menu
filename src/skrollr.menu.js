@@ -68,9 +68,10 @@
 		//Don't use the href property (link.href) because it contains the absolute url.
 		var href = link.getAttribute('href');
 		var clazz = link.getAttribute('class');
+		var validClazz = !(clazz===null) && (clazz.trim().length > 0);
 
 		//Check if it's a hashlink.
-		if(!/^#/.test(href) || (clazz===null) || (clazz && clazz.indexOf(_menuLinkClass)==-1)) {
+		if(!/^#/.test(href) || (!validClazz) || (validClazz && clazz.indexOf(_menuLinkClass)==-1)) {
 			return false;
 		}
 
