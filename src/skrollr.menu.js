@@ -68,9 +68,29 @@
 		//Don't use the href property (link.href) because it contains the absolute url.
 		var href = link.getAttribute('href');
 
-		//Check if it's a hashlink.
-		if(!/^#/.test(href)) {
-			return false;
+		// If we're only looking for simple hashlinks
+		if(!_complexLinks) {
+
+			// Look for a # at the start of the link's href
+			if(!/^#/.test(href)) {
+				return false;
+			}
+
+		} else { // Else, attempt to identify links pointing to this page
+
+			// Look for a # present in the link's href
+			if(!/#/.test(href)) {
+				return false;
+			}
+
+			// Check if it's for this page & domain
+			if( !(link.hostname == document.location.hostname && link.pathname == document.location.pathname) ) {
+				return false;
+			}
+
+			// Having done the checks & determined that the link is for this page,
+			//  now load the simple hashlink into href. 
+			href = link.hash;
 		}
 
 		//Now get the targetTop to scroll to.
@@ -158,6 +178,7 @@
 		_duration = options.duration || DEFAULT_DURATION;
 		_handleLink = options.handleLink;
 		_scale = options.scale || DEFAULT_SCALE;
+		_complexLinks = options.complexLinks === true;
 
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
@@ -198,6 +219,7 @@
 	var _animate;
 	var _handleLink;
 	var _scale;
+	var _complexLinks;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
