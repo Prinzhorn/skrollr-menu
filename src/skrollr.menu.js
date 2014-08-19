@@ -139,7 +139,7 @@
 				link = document.createElement('a');
 				link.href = window.location.hash;
 			}
-			
+
 			handleLink(link, true);
 		}
 	};
