@@ -67,9 +67,11 @@
 	var handleLink = function(link, fake) {
 		//Don't use the href property (link.href) because it contains the absolute url.
 		var href = link.getAttribute('href');
+		var clazz = link.getAttribute('class');
+		var validClazz = !(clazz===null) && (clazz.trim().length > 0);
 
 		//Check if it's a hashlink.
-		if(!/^#/.test(href)) {
+		if(!/^#/.test(href) || (!validClazz) || (validClazz && clazz.indexOf(_menuLinkClass)==-1)) {
 			return false;
 		}
 
@@ -132,8 +134,8 @@
 
 	var jumpStraightToHash = function() {
 		if(window.location.hash && document.querySelector) {
-			var link = document.querySelector('a[href="' + window.location.hash + '"]');
-
+			var searchFor = 'a' + (_menuLinkClass ? '.' + _menuLinkClass: '');
+			var link = document.querySelector(searchFor + '[href="' + window.location.hash + '"]');
 			if(link) {
 				handleLink(link, true);
 			}
@@ -158,6 +160,7 @@
 		_duration = options.duration || DEFAULT_DURATION;
 		_handleLink = options.handleLink;
 		_scale = options.scale || DEFAULT_SCALE;
+		_menuLinkClass = options.menuLinkClass || '';
 
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
@@ -198,6 +201,7 @@
 	var _animate;
 	var _handleLink;
 	var _scale;
+	var _menuLinkClass;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
