@@ -1,11 +1,11 @@
-skrollr-menu 0.1.12
-============
+skrollr-menu 0.1.13
+===================
 
 skrollr plugin for hash navigation.
 
 
 Documentation
-=====
+=============
 
 In case you want to use hash links, e.g. `<a href="#section-about">About</a>` you need to know the following:
 
@@ -85,7 +85,12 @@ skrollr.menu.click(link);
 
 
 Changelog
-====
+=========
+
+0.1.13 (2014-09-26)
+-------------------
+
+* Fixed issue with jumping to hash when page was loaded, but no link to the hash exists #(54)
 
 0.1.12 (2014-05-10)
 -------------------
