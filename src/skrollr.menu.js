@@ -134,9 +134,13 @@
 		if(window.location.hash && document.querySelector) {
 			var link = document.querySelector('a[href="' + window.location.hash + '"]');
 
-			if(link) {
-				handleLink(link, true);
+			if(!link) {
+				// No link found on page, so we create one and then activate it
+				link = document.createElement('a');
+				link.href = window.location.hash;
 			}
+
+			handleLink(link, true);
 		}
 	};
 
