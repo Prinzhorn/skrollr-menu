@@ -12,6 +12,8 @@
 	var DEFAULT_DURATION = 500;
 	var DEFAULT_EASING = 'sqrt';
 	var DEFAULT_SCALE = 1;
+	var DEFAULT_ACTIVE_CLASS = 'active';
+	var DEFAULT_MENU_SELECTOR = '.skrollr-menu';
 
 	var MENU_TOP_ATTR = 'data-menu-top';
 	var MENU_OFFSET_ATTR = 'data-menu-offset';
@@ -121,6 +123,9 @@
 				duration: _duration(_skrollrInstance.getScrollTop(), targetTop),
 				easing: _easing
 			});
+
+			setActiveLink();
+
 		} else {
 			defer(function() {
 				_skrollrInstance.setScrollTop(targetTop);
@@ -128,6 +133,19 @@
 		}
 
 		return true;
+	};
+
+	var setActiveLink = function()  {
+		if(window.location.hash && document.querySelector) {
+
+			// remove the active class from all links
+			var previousActiveLink = document.querySelector(_menuSelector + ' a.active');
+			previousActiveLink.className = previousActiveLink.className.replace(_activeClass,'');
+
+			// add the active class to the new active link
+			var newActiveLink = document.querySelector('a[href="' + window.location.hash + '"]');
+			newActiveLink.className = newActiveLink.className + ' ' + _activeClass;
+		}
 	};
 
 	var jumpStraightToHash = function() {
@@ -162,6 +180,8 @@
 		_duration = options.duration || DEFAULT_DURATION;
 		_handleLink = options.handleLink;
 		_scale = options.scale || DEFAULT_SCALE;
+		_activeClass = options.activeClass || DEFAULT_ACTIVE_CLASS;
+		_menuSelector = options.menuSelector || DEFAULT_MENU_SELECTOR;
 
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
@@ -202,6 +222,8 @@
 	var _animate;
 	var _handleLink;
 	var _scale;
+	var _activeClass;
+	var _menuSelector;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
