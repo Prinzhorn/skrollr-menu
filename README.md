@@ -1,4 +1,4 @@
-skrollr-menu 0.1.13
+skrollr-menu 0.1.14
 ===================
 
 skrollr plugin for hash navigation.
@@ -94,6 +94,11 @@ skrollr.menu.click(link);
 
 Changelog
 =========
+
+0.1.13 (2014-10-03)
+-------------------
+
+* Added the `complexLinks` option (#55).
 
 0.1.13 (2014-09-26)
 -------------------
