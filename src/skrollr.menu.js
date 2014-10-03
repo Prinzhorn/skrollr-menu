@@ -65,32 +65,29 @@
 		When the fake flag is set, the link won't change the url and the position won't be animated.
 	*/
 	var handleLink = function(link, fake) {
-		//Don't use the href property (link.href) because it contains the absolute url.
-		var href = link.getAttribute('href');
+		var hash;
 
-		// If we're only looking for simple hashlinks
-		if(!_complexLinks) {
-
-			// Look for a # at the start of the link's href
-			if(!/^#/.test(href)) {
+		//When complexLinks is enabled, we also accept links which do not just contain a simple hash.
+		if(_complexLinks) {
+			//The link points to something completely different.
+			if(link.hostname !== window.location.hostname) {
 				return false;
 			}
 
-		} else { // Else, attempt to identify links pointing to this page
-
-			// Look for a # present in the link's href
-			if(!/#/.test(href)) {
+			//The link does not link to the same page/path.
+			if(link.pathname !== document.location.pathname) {
 				return false;
 			}
 
-			// Check if it's for this page & domain
-			if( !(link.hostname == document.location.hostname && link.pathname == document.location.pathname) ) {
-				return false;
-			}
+			hash = link.hash;
+		} else {
+			//Don't use the href property (link.href) because it contains the absolute url.
+			hash = link.getAttribute('href');
+		}
 
-			// Having done the checks & determined that the link is for this page,
-			//  now load the simple hashlink into href. 
-			href = link.hash;
+		//Not a hash link.
+		if(!/^#/.test(hash)) {
+			return false;
 		}
 
 		//Now get the targetTop to scroll to.
@@ -115,7 +112,7 @@
 				targetTop = +menuTop * _scale;
 			}
 		} else {
-			var scrollTarget = document.getElementById(href.substr(1));
+			var scrollTarget = document.getElementById(hash.substr(1));
 
 			//Ignore the click if no target is found.
 			if(!scrollTarget) {
@@ -132,7 +129,7 @@
 		}
 
 		if(supportsHistory && !fake) {
-			history.pushState({top: targetTop}, '', href);
+			history.pushState({top: targetTop}, '', hash);
 		}
 
 		//Now finally scroll there.

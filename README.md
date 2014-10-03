@@ -41,20 +41,18 @@ skrollr.menu.init(s, {
 	//You are in control where skrollr will scroll to. You get the clicked link as a parameter and are expected to return a number.
 	handleLink: function(link) {
 		return 400;//Hardcoding 400 doesn't make much sense.
-    },
-    
-    //By default, skrollr-menu will only intercept links where href == '#yourElementID' exactly. 
-    //If you enable this option, it will also trim away GET options and the current URL, i.e. the 
-    // following will all work (if the user is on the correct page):
-    // 'http://example.com/currentPage/#elementID',
-    // 'http://example.com/currentDir/currentPage.html?foo=bar#elementID'
-    // '/?foo=bar#elementID'
-    //BEWARE: Some CMS systems use GET parameters to differentiate pages. If this option is enabled, 
-    // skrollr-menu will treat all such pages as the same page. 
-    complexLinks: false
+	},
+
+	//By default skrollr-menu will only react to links whose href attribute contains a hash and nothing more, e.g. `href="#foo"`.
+	//If you enable `complexLinks`, skrollr-menu also reacts to absolute and relative URLs which have a hash part.
+	//The following will all work (if the user is on the correct page):
+	//http://example.com/currentPage/#foo
+	//http://example.com/currentDir/currentPage.html?foo=bar#foo
+	///?foo=bar#foo
+	complexLinks: false
 });
 ```
- 
+
 And in order to fix the problem with the wrong offset, you are able to specify the target scroll position right at the link, e.g.
 
 ```html
@@ -75,8 +73,8 @@ For example when you have a fixed navigation with a height of `100px`, then you 
 
 ```html
 <section id="kittens" data-menu-offset="-100">
-    <h1>If it fits, I sits</h1>
-    <p>Some text about felines (the internet loves felines).</p>
+	<h1>If it fits, I sits</h1>
+	<p>Some text about felines (the internet loves felines).</p>
 </section>
 ```
 
