@@ -15,6 +15,7 @@
 
 	var MENU_TOP_ATTR = 'data-menu-top';
 	var MENU_OFFSET_ATTR = 'data-menu-offset';
+	var MENU_DURATION_ATTR = 'data-menu-duration';
 
 	var skrollr = window.skrollr;
 	var history = window.history;
@@ -132,10 +133,17 @@
 			history.pushState({top: targetTop}, '', hash);
 		}
 
+		var menuDuration = parseInt(link.getAttribute(MENU_DURATION_ATTR), 10);
+		var animationDuration = _duration(_skrollrInstance.getScrollTop(), targetTop);
+
+		if(!isNaN(menuDuration)) {
+			animationDuration = menuDuration;
+		}
+
 		//Now finally scroll there.
 		if(_animate && !fake) {
 			_skrollrInstance.animateTo(targetTop, {
-				duration: _duration(_skrollrInstance.getScrollTop(), targetTop),
+				duration: animationDuration,
 				easing: _easing
 			});
 		} else {
