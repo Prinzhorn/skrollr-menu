@@ -1,4 +1,4 @@
-skrollr-menu 0.1.14
+skrollr-menu 0.1.15
 ===================
 
 skrollr plugin for hash navigation.
@@ -92,10 +92,25 @@ skrollr.menu.click(link);
 ```
 
 
+Per-link duration
+-----------------
+
+Instead of using the `duration` option, you can also specify a duration per-link by using the `data-menu-duration` attribute.
+
+```html
+<a href="#awesome" data-menu-duration="5000">#awesome over 5 seconds</a>
+```
+
+
 Changelog
 =========
 
-0.1.13 (2014-10-03)
+0.1.15 (2014-11-06)
+-------------------
+
+* Added `data-menu-duration` attribute (#57).
+
+0.1.14 (2014-10-03)
 -------------------
 
 * Added the `complexLinks` option (#55).
