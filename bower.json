@@ -1,0 +1,17 @@
+{
+  "name": "skrollr-menu-amd",
+  "version": "0.1.12",
+  "homepage": "https://github.com/ethanresnick/skrollr-menu",
+  "authors": [
+    "Ethan Resnick <ethan.resnick@gmail.com>"
+  ],
+  "main": "dist/skrollr.menu.min.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
