@@ -140,6 +140,11 @@
 			animationDuration = menuDuration;
 		}
 
+		//Trigger the change if event if there's a listener.
+		if(_change) {
+			_change(hash, targetTop);
+		}
+
 		//Now finally scroll there.
 		if(_animate && !fake) {
 			_skrollrInstance.animateTo(targetTop, {
@@ -188,6 +193,7 @@
 		_handleLink = options.handleLink;
 		_scale = options.scale || DEFAULT_SCALE;
 		_complexLinks = options.complexLinks === true;
+		_change = options.change;
 
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
@@ -229,6 +235,7 @@
 	var _handleLink;
 	var _scale;
 	var _complexLinks;
+	var _change;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page

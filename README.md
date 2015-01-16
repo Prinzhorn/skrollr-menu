@@ -49,7 +49,12 @@ skrollr.menu.init(s, {
 	//http://example.com/currentPage/#foo
 	//http://example.com/currentDir/currentPage.html?foo=bar#foo
 	///?foo=bar#foo
-	complexLinks: false
+	complexLinks: false,
+
+	//This event is triggered right before we jump/animate to a new hash.
+	change: function(newHash, newTopPosition) {
+		//Do stuff
+	}
 });
 ```
 
@@ -104,6 +109,11 @@ Instead of using the `duration` option, you can also specify a duration per-link
 
 Changelog
 =========
+
+0.1.16 (2015-01-16)
+-------------------
+
+* Added a `change` event which triggers before jumping to a new position / changing the hash (#61).
 
 0.1.15 (2014-11-06)
 -------------------
