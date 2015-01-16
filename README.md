@@ -1,5 +1,5 @@
-skrollr-menu 0.1.15
-===================
+skrollr-menu 1.0.0
+==================
 
 skrollr plugin for hash navigation.
 
@@ -110,10 +110,11 @@ Instead of using the `duration` option, you can also specify a duration per-link
 Changelog
 =========
 
-0.1.16 (2015-01-16)
+1.0.0 (2015-01-16)
 -------------------
 
 * Added a `change` event which triggers before jumping to a new position / changing the hash (#61).
+* Call this 1.0.0 already...
 
 0.1.15 (2014-11-06)
 -------------------
