@@ -86,7 +86,7 @@
 			hash = link.getAttribute('href');
 		}
 
-		//Not a hash link.
+		//Not a hash link or one containing data-ignore-skrollr attribute
 		if(!/^#/.test(hash) || link.dataset.ignoreSkrollr) {
 			return false;
 		}
