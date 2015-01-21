@@ -87,7 +87,7 @@
 		}
 
 		//Not a hash link.
-		if(!/^#/.test(hash)) {
+		if(!/^#/.test(hash) || link.dataset.ignoreSkrollr) {
 			return false;
 		}
 
