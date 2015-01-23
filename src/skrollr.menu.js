@@ -27,7 +27,7 @@
 	*/
 	var findParentLink = function(element) {
 		//We reached the top, no link found.
-		if(element === document) {
+		if(element === document || element === null) {
 			return false;
 		}
 
