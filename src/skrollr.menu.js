@@ -28,7 +28,7 @@
 	*/
 	var findParentLink = function(element) {
 		//We reached the top, no link found.
-		if(element === document) {
+		if(element === document || element === null) {
 			return false;
 		}
 
@@ -87,8 +87,8 @@
 			hash = link.getAttribute('href');
 		}
 
-		//Not a hash link.
-		if(!/^#/.test(hash)) {
+		//Not a hash link or one containing data-ignore-skrollr attribute
+		if(!/^#/.test(hash) || link.dataset.ignoreSkrollr) {
 			return false;
 		}
 
