@@ -16,6 +16,7 @@
 	var MENU_TOP_ATTR = 'data-menu-top';
 	var MENU_OFFSET_ATTR = 'data-menu-offset';
 	var MENU_DURATION_ATTR = 'data-menu-duration';
+	var MENU_IGNORE_ATTR = 'data-menu-ignore';
 
 	var skrollr = window.skrollr;
 	var history = window.history;
@@ -88,6 +89,11 @@
 
 		//Not a hash link.
 		if(!/^#/.test(hash)) {
+			return false;
+		}
+
+		//The link has the ignore attribute.
+		if(!fake && link.getAttribute(MENU_IGNORE_ATTR) !== null) {
 			return false;
 		}
 
