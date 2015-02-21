@@ -1,4 +1,4 @@
-skrollr-menu 1.0.0
+skrollr-menu 1.0.1
 ==================
 
 skrollr plugin for hash navigation.
@@ -85,6 +85,11 @@ For example when you have a fixed navigation with a height of `100px`, then you 
 
 Note how the offset is negative, because we want to scroll down `100px` **less** than normal. Or in other words, we want to stop `100px` **before** the element. Positive values work the opposite way (scroll farther than usual).
 
+Ignore links
+------------
+
+If you want skrollr-menu to ignore some of the hash links add an empty `data-menu-ignore` attribute.
+
 
 Programmatically triggering a click
 -----------------------------------
@@ -109,6 +114,11 @@ Instead of using the `duration` option, you can also specify a duration per-link
 
 Changelog
 =========
+
+1.0.1 (2015-01-24)
+-------------------
+
+* Added `data-menu-ignore` support (#7, #64).
 
 1.0.0 (2015-01-16)
 -------------------
