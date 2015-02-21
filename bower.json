@@ -1,0 +1,28 @@
+{
+  "name": "skrollr-menu",
+  "homepage": "http://prinzhorn.github.io/skrollr-menu/",
+  "authors": [
+    "Alexander Prinzhorn"
+  ],
+  "description": "skrollr plugin for hash navigation",
+  "main": "src/skrollr.menu.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "parallax",
+    "scroll",
+    "animation",
+    "html5",
+    "css3",
+    "transition"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
