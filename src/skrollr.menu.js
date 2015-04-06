@@ -135,7 +135,7 @@
 			}
 		}
 
-		if(supportsHistory && !fake) {
+		if(supportsHistory && _updateUrl && !fake) {
 			history.pushState({top: targetTop}, '', hash);
 		}
 
@@ -200,6 +200,7 @@
 		_scale = options.scale || DEFAULT_SCALE;
 		_complexLinks = options.complexLinks === true;
 		_change = options.change;
+		_updateUrl = options.updateUrl !== false;
 
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
@@ -242,6 +243,7 @@
 	var _scale;
 	var _complexLinks;
 	var _change;
+	var _updateUrl;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page

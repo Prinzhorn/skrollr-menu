@@ -54,7 +54,10 @@ skrollr.menu.init(s, {
 	//This event is triggered right before we jump/animate to a new hash.
 	change: function(newHash, newTopPosition) {
 		//Do stuff
-	}
+	},
+	
+	//Add hash link (e.g. `#foo`) to URL or not.
+	updateUrl: false //defaults to `true`.
 });
 ```
 
