@@ -1,4 +1,4 @@
-skrollr-menu 1.0.1
+skrollr-menu 1.0.2
 ==================
 
 skrollr plugin for hash navigation.
@@ -55,7 +55,7 @@ skrollr.menu.init(s, {
 	change: function(newHash, newTopPosition) {
 		//Do stuff
 	},
-	
+
 	//Add hash link (e.g. `#foo`) to URL or not.
 	updateUrl: false //defaults to `true`.
 });
@@ -117,6 +117,11 @@ Instead of using the `duration` option, you can also specify a duration per-link
 
 Changelog
 =========
+
+1.0.2 (2015-04-06)
+------------------
+
+* Added `updateUrl` option (#75).
 
 1.0.1 (2015-01-24)
 -------------------
