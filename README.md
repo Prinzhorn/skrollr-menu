@@ -1,4 +1,4 @@
-skrollr-menu 1.0.2
+skrollr-menu 1.0.3
 ==================
 
 skrollr plugin for hash navigation.
@@ -117,6 +117,11 @@ Instead of using the `duration` option, you can also specify a duration per-link
 
 Changelog
 =========
+
+1.0.3 (2015-06-19)
+------------------
+
+* Fixed issue with clicking elements which get removed from the DOM (#77)
 
 1.0.2 (2015-04-06)
 ------------------
