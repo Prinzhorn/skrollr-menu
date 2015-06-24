@@ -226,6 +226,20 @@
 
 		jumpStraightToHash();
 	};
+    /*
+        Scroll to a specified URL fragment, with or without the `#` prefix.
+        /!\ You must have somewhere in the page an anchor that points to it.
+        @param string hash An URL fragment to scroll to
+     */
+    skrollr.menu.scrollTo = function(fragment) {
+        if(!_skrollrInstance) throw "Please run skrollr.menu.init() first";
+        if(fragment.substr(0,1) != '#') fragment = '#' + fragment;
+        var link = document.querySelector('a[href="' + fragment + '"]');
+
+        if(link) {
+            handleLink(link, true);
+        }
+    };
 
 	//Expose the handleLink function to be able to programmatically trigger clicks.
 	skrollr.menu.click = function(link) {
