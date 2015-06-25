@@ -183,6 +183,19 @@
 	var defer = function(fn) {
 		window.setTimeout(fn, 1);
 	};
+	
+	var _previousSection = undefined;
+	var initializeScrollHandler = function() {
+	    $(window).scroll(function() {
+	        var screenFocus = $(window).scrollTop() + ($(window).height() / 2);
+	        $('section').each(function(index, section) {
+	            if(screenFocus > $(section).offset().top && screenFocus < ($(section).offset().top + $(section).height()) && section.id !== _previousSection) {
+	                _onSectionChanged(section.id);
+	                _previousSection = section.id;
+	            }
+	        });
+        });
+	};
 
 	/*
 		Global menu function accessible through window.skrollr.menu.init.
@@ -201,6 +214,7 @@
 		_complexLinks = options.complexLinks === true;
 		_change = options.change;
 		_updateUrl = options.updateUrl !== false;
+		_onSectionChanged = options.onSectionChanged;
 
 		if(typeof _duration === 'number') {
 			_duration = (function(duration) {
@@ -208,6 +222,10 @@
 					return duration;
 				};
 			}(_duration));
+		}
+		
+		if(_onSectionChanged && typeof _onSectionChanged === "function") {
+		    initializeScrollHandler();
 		}
 
 		//Use event bubbling and attach a single listener to the document.
@@ -244,6 +262,7 @@
 	var _complexLinks;
 	var _change;
 	var _updateUrl;
+	var _onSectionChanged;
 
 	//In case the page was opened with a hash, prevent jumping to it.
 	//http://stackoverflow.com/questions/3659072/jquery-disable-anchor-jump-when-loading-a-page
