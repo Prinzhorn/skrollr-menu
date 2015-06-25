@@ -57,7 +57,12 @@ skrollr.menu.init(s, {
 	},
 
 	//Add hash link (e.g. `#foo`) to URL or not.
-	updateUrl: false //defaults to `true`.
+	updateUrl: false, //defaults to `true`.
+	
+	//This event is triggered if a new section enters the center of the viewPort during scrolling
+	onSectionChanged: function(newHash) {
+		//Do stuff
+	}
 });
 ```
 
