@@ -138,6 +138,11 @@
 		if(supportsHistory && _updateUrl && !fake) {
 			history.pushState({top: targetTop}, '', hash);
 		}
+		
+		// please, let me a chance to know if the hash has changed
+		if ( typeof _skrollrInstance.onHashChange === 'function' ) {
+                        _skrollrInstance.onHashChange(hash);
+                }
 
 		var menuDuration = parseInt(link.getAttribute(MENU_DURATION_ATTR), 10);
 		var animationDuration = _duration(_skrollrInstance.getScrollTop(), targetTop);
